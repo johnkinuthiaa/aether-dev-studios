@@ -13,6 +13,7 @@ export const sfPro = localFont({
   ],
   variable: "--font-sf-pro",
   display: "swap",
+  adjustFontFallback: false,
   fallback: [
     "-apple-system",
     "BlinkMacSystemFont",
@@ -74,6 +75,7 @@ export const sfMono = localFont({
   ],
   variable: "--font-sf-mono",
   display: "swap",
+  adjustFontFallback: false,
   fallback: [
     "ui-monospace",
     "SFMono-Regular",
@@ -99,5 +101,6 @@ export const newYork = localFont({
   ],
   variable: "--font-ny",
   display: "swap",
+  adjustFontFallback: false,
   fallback: ["Georgia", "Cambria", "Times New Roman", "Times", "serif"],
 });
