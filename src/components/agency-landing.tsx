@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SiteFooter } from "@/components/site-footer";
 import { ProjectDeck } from "@/components/ui/scroll-stacking-cards";
-import { AgencyKpiSection } from "@/components/agency-kpis";
+// import { AgencyKpiSection } from "@/components/agency-kpis";
 import { PrismaHero } from "@/components/ui/prisma-hero";
 import { benefits, faqs, projects, reviews, serviceGroups } from "@/lib/site-data";
 import {Button} from "@/components/ui/button"
@@ -46,7 +46,7 @@ export function AgencyLanding() {
       <main className="main-area">
        
         <div data-sections>
-          <AgencyKpiSection />
+          {/* <AgencyKpiSection /> */}
 
           <section id="services" className="shell section font-sans!" data-reveal>
             <div className="section-heading ">
