@@ -1,0 +1,54 @@
+# Aether Tech Studios
+
+> Aether Tech Studios helps businesses and SMEs grow with conversion-focused design, custom web app development, and end-to-end Zoho integrations.
+
+## Website
+- Canonical: https://www.aethertechstudios.com/
+- Contact: hello@aethertechstudios.com
+
+## Core Services
+- Strategic product and brand design
+- Custom web app development
+- Zoho implementation and integration
+- Workflow automation and business process optimization
+- CRM implementation and data flow architecture
+- Customer support system setup and service operations optimization
+- Security and access-control hardening for business systems
+
+## Zoho Integration Coverage
+- Sales & Marketing: CRM, CRM Plus, Marketing Plus, Bigin, Campaigns, Forms, Sign, Social, SalesIQ, Survey, Sites, PageSense, Backstage, Bookings, Webinar, LandingPage, Thrive, Publish
+- Finance: Books, Inventory, Invoice, Billing, Expense, Payroll, POS
+- Email & Collaboration: Workplace, Mail, Cliq, Calendar, Tables, WorkDrive, Writer, Sheet, Show, Connect, Meeting, Vault, Notebook, TeamInbox, ZeptoMail, Learn, PDF Editor
+- Service: Desk, Assist, Site24x7, StatusIQ, Lens, Voice, FSM
+- Human Resources: Recruit, People, Workerly
+- Developer & Automation: Creator, Analytics, Flow, Catalyst, RPA, QEngine
+- Legal and IT Security: Contracts, Endpoint Central, Patch Manager Plus, Remote Access Plus, Identity360, Digital Risk Analyzer, CloudDNS
+- Project Delivery: Projects, Sprints, BugTracker, Projects Plus
+
+## High-Intent Search Topics
+- zoho crm integration
+- crm implementation services
+- workflow automation services
+- business process automation
+- custom web app development company
+- zoho consultant
+- zoho implementation services
+- marketing automation for small business
+- help desk software for small business
+- field service management software
+- inventory management software for small business
+
+## Key Pages
+- Home: /
+- Services: /#services
+- Case Studies: /#work
+- FAQs: /#faqs
+- Contact: /#contact
+
+## Case Studies
+- /projects/fugitive
+- /projects/radiant-ui
+- /projects/soc-simulator
+- /projects/nebula
+- /projects/stomic-studio
+- /projects/hivecrest

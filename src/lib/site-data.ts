@@ -1,0 +1,403 @@
+export const navItems = [
+  { label: "KPIs", href: "#kpis" },
+  { label: "Services", href: "#services" },
+  { label: "Work", href: "#work" },
+  { label: "Benefits", href: "#benefits" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "FAQs", href: "#faqs" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const services = [
+  {
+    title: "Backend Solutions",
+    details:
+      "Enterprise server architecture, relational and NoSQL database engineering, distributed caching layers, background worker queues, and secure data access layers engineered for high throughput and reliability.",
+  },
+  {
+    title: "AI Design Cleanup",
+    details:
+      "Transforming raw, disjointed AI-generated UI concepts into pixel-perfect, accessible Figma design systems with standardized typography, spacing tokens, responsive layouts, and interactive component states.",
+  },
+  {
+    title: "App Dev (Web & Mobile)",
+    details:
+      "Full-cycle application engineering across high-performance web platforms and cross-platform mobile apps (React Native, iOS, Android) with smooth 60fps interactions and robust offline support.",
+  },
+  {
+    title: "API Development",
+    details:
+      "Contract-first RESTful, GraphQL, and gRPC API engineering featuring comprehensive OpenAPI documentation, secure OAuth2/JWT gateways, automated rate limiting, and resilient webhook event pipelines.",
+  },
+  {
+    title: "Distributed Systems Dev",
+    details:
+      "Fault-tolerant, horizontally scalable multi-node architectures, Apache Kafka event streaming, consensus protocols, database sharding, and zero-downtime multi-region cloud deployments.",
+  },
+  {
+    title: "Google Ads",
+    details:
+      "High-intent Search, Performance Max, and YouTube ad campaigns configured with conversion value bidding, negative keyword trees, and ROAS-focused campaign management for qualified customer acquisition.",
+  },
+  {
+    title: "Meta Ads (Facebook & Instagram)",
+    details:
+      "Full-funnel paid social campaigns powered by dynamic creative testing, hyper-targeted audience segmentation, and server-side Conversions API (CAPI) integration to defeat signal degradation.",
+  },
+  {
+    title: "TikTok Ads",
+    details:
+      "High-velocity vertical video advertising, trend-native UGC creative pipelines, TikTok Spark Ads, and real-time attribution tracking designed for viral brand scale.",
+  },
+];
+
+export type ServiceItem = (typeof services)[number];
+
+export type ServiceGroup = {
+  title: string;
+  intro: string;
+  items: ServiceItem[];
+};
+
+const serviceLookup = new Map(services.map((service) => [service.title, service] as const));
+
+function pickServices(titles: string[]): ServiceItem[] {
+  return titles
+    .map((title) => serviceLookup.get(title))
+    .filter((service): service is ServiceItem => service !== undefined);
+}
+
+const configuredServiceGroups: Array<{
+  title: string;
+  intro: string;
+  serviceTitles: string[];
+}> = [
+  {
+    title: "Backend & Distributed Systems",
+    intro:
+      "High-concurrency infrastructure, fault-tolerant architectures, and mission-critical data pipelines built to handle massive scale without downtime.",
+    serviceTitles: [
+      "Backend Solutions",
+      "Distributed Systems Dev",
+      "API Development",
+    ],
+  },
+  {
+    title: "Product Engineering & AI Design Cleanup",
+    intro:
+      "Elevating digital products from concept to launch with accessible design systems, AI asset refinement, and modern cross-platform application engineering.",
+    serviceTitles: [
+      "App Dev (Web & Mobile)",
+      "AI Design Cleanup",
+    ],
+  },
+  {
+    title: "Paid Acquisition & Performance Marketing",
+    intro:
+      "Full-funnel media buying across Google, Meta, and TikTok, engineered for profitable customer acquisition, low CAC, and high ROAS.",
+    serviceTitles: [
+      "Google Ads",
+      "Meta Ads (Facebook & Instagram)",
+      "TikTok Ads",
+    ],
+  },
+];
+
+export const serviceGroups: ServiceGroup[] = configuredServiceGroups.map((group) => ({
+  title: group.title,
+  intro: group.intro,
+  items: pickServices(group.serviceTitles),
+}));
+
+export type ProjectItem = {
+  slug: string;
+  title: string;
+  category: string;
+  summary: string;
+  tags: string[];
+  heroLabel: string;
+  goals: string[];
+  identityShowcase: string[];
+  process: string[];
+  results: string[];
+  gradient: string;
+};
+
+export const projects: ProjectItem[] = [
+  {
+    slug: "fugitive",
+    title: "ApexPay Global",
+    category: "Distributed Systems Dev & Backend Solutions",
+    summary:
+      "Engineered an ultra-low latency, fault-tolerant payment transaction and ledger engine processing tens of millions in monthly payment volume across multi-region cloud clusters.",
+    tags: ["Distributed Systems", "Backend Architecture", "Apache Kafka", "Redis Cluster", "High Throughput"],
+    heroLabel: "From fragile monolithic bottlenecks to a resilient 12,000 TPS distributed payment engine",
+    goals: [
+      "Eliminate single-point-of-failure database locks causing checkout timeouts during peak retail sales.",
+      "Implement a distributed immutable double-entry ledger ensuring zero data loss and strict ACID compliance.",
+      "Reduce p99 transaction round-trip latency below 100 milliseconds for global mobile checkout partners.",
+    ],
+    identityShowcase: [
+      "Designed an event-driven microservices architecture using Apache Kafka for partitioned event streaming, backed by a Redis cluster for sub-millisecond idempotency validation.",
+      "Engineered a high-throughput transaction execution engine in Go with gRPC inter-service communication, connection-pooled PostgreSQL, and distributed hash-ring database sharding.",
+      "Implemented active-active multi-region failover with automated Raft-based leader election, consensus health checks, and chaos-tested disaster recovery protocols.",
+      "Constructed a live telemetry and observability suite with OpenTelemetry, Prometheus, and Grafana, providing sub-second anomaly detection and instant alerting.",
+    ],
+    process: [
+      "Rigorous system bottleneck audit simulating 25,000 TPS to isolate database deadlocks and socket exhaustion under heavy load.",
+      "Phased strangler-fig migration routing traffic via shadow writes to verify 100% data parity with the legacy ledger.",
+      "Zero-downtime production cutover followed by 24/7 automated synthetic latency and error-budget monitoring.",
+    ],
+    results: [
+      "Handled 12,500 peak transactions per second during Black Friday flash sales with 99.999% uptime and zero degradation.",
+      "Slashed p99 transaction latency by 68% (from 1,420ms down to 78ms), generating a 14% lift in partner checkout completion.",
+      "Completely eliminated double-spend anomalies and ledger discrepancies, saving an estimated $420,000 annually in reconciliation costs.",
+    ],
+    gradient: "linear-gradient(145deg, #1e293b 0%, #0f172a 45%, #0284c7 100%)",
+  },
+  {
+    slug: "radiant-ui",
+    title: "OmniaCare Health",
+    category: "App Dev & AI Design Cleanup",
+    summary:
+      "Refined unrefined AI-generated mockups into an enterprise-grade Figma design system, followed by full-stack mobile and web app development for telehealth consultations.",
+    tags: ["App Dev", "AI Design Cleanup", "React Native", "Next.js", "Telehealth"],
+    heroLabel: "Transforming raw AI concepts into a production-grade, HIPAA-compliant patient care platform",
+    goals: [
+      "Rescue a disjointed, chaotic product design generated by AI tools that lacked UX hierarchy, consistent components, and accessibility standards.",
+      "Build cross-platform iOS and Android mobile apps alongside a responsive physician web portal.",
+      "Streamline patient onboarding, appointment scheduling, and encrypted video teleconsultations.",
+    ],
+    identityShowcase: [
+      "AI Design Cleanup: converted 80+ inconsistent AI-generated UI assets into a cohesive Figma design system featuring 120+ modular components, WCAG AAA compliant contrast, and unified design tokens.",
+      "Engineered cross-platform mobile apps using React Native with native bridge performance optimizations, biometrics authentication, and push notification pipelines.",
+      "Developed a physician web application in Next.js with WebRTC-powered low-latency video streaming, real-time chat, and electronic health record (EHR) sync.",
+      "Implemented end-to-end encrypted storage and data transmission compliant with HIPAA and GDPR security standards.",
+    ],
+    process: [
+      "Deep UI/UX audit identifying visual artifacts, layout contradictions, and UX edge cases across AI-generated wireframes.",
+      "Component library standardization and Figma-to-code token synchronization with Tailwind CSS.",
+      "Agile bi-weekly development sprints with continuous patient and clinician user-testing sessions.",
+    ],
+    results: [
+      "Increased new patient onboarding completion rate from 41% to 89%, directly boosting scheduled consultations by 115%.",
+      "Decreased clinic phone support volume by 54% as patients adopted the self-service booking and prescription refill workflow.",
+      "Accelerated internal engineering velocity by 3.2x due to standardized reusable design system components and unified state management.",
+    ],
+    gradient: "linear-gradient(145deg, #064e3b 0%, #022c22 45%, #059669 100%)",
+  },
+  {
+    slug: "soc-simulator",
+    title: "Nexus Freight Network",
+    category: "API Development & Backend Solutions",
+    summary:
+      "Architected a unified B2B logistics API gateway connecting over 45 maritime and land carrier networks with real-time tracking, rate calculation, and automated dispatch.",
+    tags: ["API Development", "Backend Solutions", "GraphQL", "REST Gateway", "Webhooks"],
+    heroLabel: "A unified API ecosystem orchestrating multi-carrier logistics across 45+ shipping providers",
+    goals: [
+      "Replace fragmented, incompatible legacy carrier APIs and brittle scraping scripts with a standardized API infrastructure.",
+      "Provide freight forwarders with real-time route optimization, automated customs document generation, and container telemetry.",
+      "Minimize enterprise carrier onboarding time from months to days.",
+    ],
+    identityShowcase: [
+      "Engineered an enterprise API gateway supporting unified GraphQL queries and RESTful endpoints with sub-50ms caching layers.",
+      "Built an asynchronous webhook delivery pipeline handling 8M+ daily events with exponential backoff, circuit breaking, and replayable dead-letter queues.",
+      "Designed an interactive developer documentation portal with auto-generated OpenAPI/Swagger specifications, sandbox test environments, and client SDKs in Python, Node.js, and Go.",
+      "Built high-performance backend microservices with database connection pooling and automated rate-limiting to protect downstream partner servers.",
+    ],
+    process: [
+      "Carrier specification reverse-engineering and protocol normalization across EDI, SOAP, XML, and REST formats.",
+      "Schema-first API architecture designed in collaboration with senior partner freight brokers.",
+      "Automated continuous testing suite running 400+ integration contract tests on every code push.",
+    ],
+    results: [
+      "Reduced new partner integration onboarding time from 6 weeks to under 3 business days.",
+      "Decreased failed booking and tracking requests from 8.2% to 0.04%, processing over $18M in freight bookings per month.",
+      "Reduced API cloud infrastructure operating costs by 42% through intelligent request deduplication and distributed memory caching.",
+    ],
+    gradient: "linear-gradient(145deg, #312e81 0%, #1e1b4b 45%, #4f46e5 100%)",
+  },
+  {
+    slug: "nebula",
+    title: "Lumina Wellness",
+    category: "Google, Meta & TikTok Ads + App Dev",
+    summary:
+      "Spearheaded a full-funnel paid advertising engine across Google, Meta, and TikTok, coupled with a custom high-speed headless checkout web app.",
+    tags: ["Google Ads", "Meta Ads", "TikTok Ads", "App Dev", "Performance Marketing"],
+    heroLabel: "Scaling multi-channel paid acquisition to 3.8x Blended ROAS with high-converting web apps",
+    goals: [
+      "Overcome rising ad costs and post-iOS14 tracking loss that had capped company growth at 1.4x ROAS.",
+      "Scale customer acquisition across Google Search, Meta Ads, and TikTok Ads simultaneously without audience fatigue.",
+      "Build an ultra-fast checkout web application to minimize cart abandonment and maximize purchase conversion.",
+    ],
+    identityShowcase: [
+      "Multi-Platform Paid Ads Engine: orchestrated targeted Google Search / Performance Max campaigns, Meta Advantage+ audience testing, and viral TikTok Spark Ads with weekly creative iterations.",
+      "First-Party Tracking Infrastructure: deployed server-side Meta Conversions API (CAPI) and Google Tag Manager Server container to recover 98%+ of attribution data.",
+      "High-Speed Headless Storefront: built a Next.js ecommerce web app featuring sub-800ms page loads, one-click checkout, and dynamic personalized upsell funnels.",
+      "Creative Sprint Pipeline: established a data-driven creative matrix producing and testing 25+ hook/angle variations per week based on audience resonance data.",
+    ],
+    process: [
+      "Comprehensive ad account audit and attribution rebuild using first-party server telemetry.",
+      "Rapid iterative creative testing matrix: isolating winning hooks, visual angles, audio tracks, and calls to action.",
+      "Bi-weekly budget reallocation dynamically shifting capital toward the highest ROAS channels and audiences.",
+    ],
+    results: [
+      "Scaled monthly revenue by 310% in under 5 months while expanding Blended Return on Ad Spend (ROAS) from 1.4x to 3.8x.",
+      "Lowered Customer Acquisition Cost (CAC) by 36% through creative optimization and server-side signal fidelity.",
+      "Lifted mobile checkout conversion rate by 28% through the custom sub-second Next.js web application.",
+    ],
+    gradient: "linear-gradient(145deg, #701a75 0%, #4a044e 45%, #c026d3 100%)",
+  },
+  {
+    slug: "stomic-studio",
+    title: "Synthetix Workspaces",
+    category: "AI Design Cleanup & App Dev",
+    summary:
+      "Rescued and completely re-engineered an AI-generated SaaS interface into an intuitive, high-performance real-time collaborative workspace web application.",
+    tags: ["AI Design Cleanup", "App Dev", "Design Systems", "WebSockets", "SaaS"],
+    heroLabel: "From disjointed AI interface prototypes to a fluid, real-time collaborative SaaS platform",
+    goals: [
+      "Solve severe user churn caused by confusing layouts, conflicting visual elements, and broken responsive states in an AI-generated prototype.",
+      "Build a blazing-fast collaborative workspace supporting concurrent multi-user editing and document sharing.",
+      "Deliver a modern, keyboard-first, distraction-free productivity environment.",
+    ],
+    identityShowcase: [
+      "Comprehensive AI Design Cleanup: audited 150+ prototype screens, purged confusing visual clutter, unified typography and spacing grids, and established an elegant dark/light theme system.",
+      "Real-Time Collaboration Engine: developed web application with WebSockets and Conflict-Free Replicated Data Types (CRDTs) for lag-free, multi-cursor collaborative editing.",
+      "Keyboard-First Navigation: built intuitive command palettes (Cmd+K), markdown shortcuts, and contextual action menus for power users.",
+      "Scalable Frontend Architecture: modular React/TypeScript codebase with zero unnecessary re-renders and smooth 60fps animations.",
+    ],
+    process: [
+      "Design refactoring sprint: replacing inconsistent one-off AI components with a unified design system in Figma.",
+      "Prototype validation with beta users to confirm UX ergonomics and workflow clarity.",
+      "Full-stack production engineering, performance tuning, and automated cross-browser regression testing.",
+    ],
+    results: [
+      "30-day user retention surged by 48% within 60 days following the launch of the polished design and app.",
+      "Reached #2 Product of the Day on Product Hunt, driving 18,400+ new signups in 48 hours.",
+      "Converted 8.4% of free workspace accounts into paid annual enterprise tiers, exceeding company projections by 2.5x.",
+    ],
+    gradient: "linear-gradient(145deg, #431407 0%, #1c1917 45%, #ea580c 100%)",
+  },
+  {
+    slug: "hivecrest",
+    title: "Veloce Fleet Intelligence",
+    category: "Distributed Systems Dev & API Development",
+    summary:
+      "Built a geo-distributed telemetry ingestion and processing platform streaming live diagnostics and GPS events from 50,000+ commercial vehicles.",
+    tags: ["Distributed Systems", "API Development", "IoT Telemetry", "ClickHouse", "Microservices"],
+    heroLabel: "Real-time distributed stream processing and API architecture for 50,000+ IoT fleet vehicles",
+    goals: [
+      "Overcome massive ingestion lag (exceeding 4 hours) during peak morning fleet operations.",
+      "Process 40,000+ GPS, fuel, and engine sensor events per second with sub-second alert triggers.",
+      "Expose a secure, multi-tenant developer API for enterprise logistics customers and third-party telematics integrations.",
+    ],
+    identityShowcase: [
+      "High-Volume Distributed Ingestion Mesh: built using Go, RabbitMQ, and Apache Kafka cluster, partitioning incoming vehicle telemetry streams without message drops.",
+      "Time-Series Data Architecture: implemented distributed TimescaleDB and ClickHouse clusters with automatic time-based partitioning and compression.",
+      "Real-Time Anomaly Detection Engine: sub-second stream processing detecting fuel theft, collision events, and route deviations with instant webhooks and SMS push.",
+      "Public Fleet Telematics API: comprehensive REST and gRPC API suite with OAuth2 client-credential authentication, granular scoping, and rate controls.",
+    ],
+    process: [
+      "Benchmark simulation identifying IOPS bottlenecks, memory leaks, and network socket exhaustion in the legacy stack.",
+      "Architecture transition to containerized microservices managed with Kubernetes across distributed cloud regions.",
+      "Live canary deployments maintaining 100% telemetry continuity during the migration of 50,000 active vehicle tracking units.",
+    ],
+    results: [
+      "Slashed fleet telemetry processing delay from 4.2 hours down to 240 milliseconds, delivering real-time vehicle dispatching.",
+      "Enabled the client to win a landmark $2.4M municipal transit fleet contract after passing rigorous 99.99% SLA stress tests.",
+      "Reduced monthly cloud compute and database hosting spend by 38% through optimized timeseries data compression and indexing.",
+    ],
+    gradient: "linear-gradient(145deg, #134e4a 0%, #042f2e 45%, #0d9488 100%)",
+  },
+];
+
+export const benefits = [
+  {
+    title: "Distributed Architecture at Scale",
+    details:
+      "We engineer backends, event streams, and APIs designed to process millions of transactions without single points of failure.",
+  },
+  {
+    title: "AI Design Cleanup & Token Precision",
+    details:
+      "We rescue messy, unrefined AI-generated wireframes and turn them into cohesive, accessible, enterprise-grade Figma design systems.",
+  },
+  {
+    title: "Full-Stack App Development",
+    details:
+      "From responsive web platforms to cross-platform mobile apps, we deliver sub-second response times and 60fps interactive experiences.",
+  },
+  {
+    title: "Contract-First API Engineering",
+    details:
+      "Clean REST, GraphQL, and gRPC endpoints equipped with automated OpenAPI documentation, client SDKs, and enterprise security.",
+  },
+  {
+    title: "High-ROAS Paid Acquisition",
+    details:
+      "Full-funnel Google, Meta, and TikTok ad campaigns engineered with server-side attribution, creative testing, and ruthless budget optimization.",
+  },
+  {
+    title: "Measurable Commercial Impact",
+    details:
+      "We measure success in business metrics: latency reduction, cloud cost savings, conversion rate lift, and verifiable return on ad spend.",
+  },
+];
+
+export const reviews = [
+  {
+    name: "Marcus Vance",
+    role: "CTO, ApexPay Global",
+    rating: "5.0/5",
+    quote:
+      "Aether Tech Studios completely overhauled our distributed transaction pipeline. We went from catastrophic latency spikes to handling 12,000+ TPS with zero downtime on Black Friday. Their backend and distributed systems expertise is world-class.",
+  },
+  {
+    name: "Dr. Elena Rostova",
+    role: "Head of Product, OmniaCare Health",
+    rating: "5.0/5",
+    quote:
+      "We had a mountain of AI-generated wireframes that were visually disjointed and unusable. Aether's AI design cleanup transformed them into a breathtaking Figma design system, and their team then built our React Native apps ahead of schedule.",
+  },
+  {
+    name: "Sarah Jenkins",
+    role: "VP of Growth, Lumina Wellness",
+    rating: "5.0/5",
+    quote:
+      "Their team scaled our paid media across Google, Meta, and TikTok from 1.4x to 3.8x Blended ROAS while tripling our monthly revenue. Their custom high-speed Next.js checkout app directly contributed to our conversion breakthrough.",
+  },
+];
+
+export const faqs = [
+  {
+    question: "What backend solutions and distributed systems capabilities do you provide?",
+    answer:
+      "We design and build high-concurrency backend services, microservices architectures, distributed event streaming (Apache Kafka, RabbitMQ), database sharding (PostgreSQL, ClickHouse, Redis), and fault-tolerant cloud infrastructure deployed across multi-region clusters.",
+  },
+  {
+    question: "What exactly is 'AI Design Cleanup' and when should we use it?",
+    answer:
+      "AI image and UI generators often output visually striking but practically broken interfaces; lacking component hierarchies, consistent spacing, accessibility standards, responsive logic, and developer-friendly tokens. We clean up, standardize, and elevate AI-generated mockups into production-grade systems ready for immediate engineering handoff.",
+  },
+  {
+    question: "What frameworks and platforms do you use for app development?",
+    answer:
+      "For web applications, we specialize in Next.js, React, TypeScript, and Tailwind CSS. For mobile applications, we engineer high-performance cross-platform apps using React Native, with native bridges when specialized device hardware acceleration or background services are required.",
+  },
+  {
+    question: "How do you approach API development and integration?",
+    answer:
+      "We follow a contract-first design methodology using OpenAPI / Swagger or GraphQL schemas. We engineer high-throughput REST, GraphQL, and gRPC APIs with built-in OAuth2/JWT authentication, rate-limiting, comprehensive SDK generation, and resilient webhook delivery systems.",
+  },
+  {
+    question: "How do you manage and scale Google, Meta, and TikTok ad campaigns?",
+    answer:
+      "We operate a full-funnel performance marketing engine. We deploy server-side Conversions API (CAPI) and Google Tag Manager server containers to guarantee attribution accuracy. We then pair high-intent Google Search and Performance Max campaigns with Meta Advantage+ and viral TikTok Spark Ads, driven by continuous weekly creative testing matrices.",
+  },
+  {
+    question: "Can you handle both the engineering and the paid marketing under one team?",
+    answer:
+      "Yes. That is one of our greatest competitive advantages. Because our developers and paid media buyers collaborate closely, we can optimize the entire funnel—building sub-second landing pages, seamless checkout flows, server-side tracking, and high-converting ad creative without handoff friction.",
+  },
+];
