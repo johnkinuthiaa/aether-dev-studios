@@ -59,35 +59,35 @@ export function AgencyLanding() {
               <p className="label-line text-blue-500!">{"// Services"}</p>
               <h2 className="font-sans">What we offer</h2>
               <p className="my-6!">
-                Complete technical and growth delivery across backend solutions, AI design cleanup, mobile and web app dev, contract-first API development, distributed systems, and performance paid advertising.
+                Complete technical and growth delivery: greenfield product engineering, high-throughput backend solutions, AI design cleanup & agent MVP refinement, and high-ROAS paid advertising.
               </p>
             </div>
 
             <div className="my-14 flex flex-col gap-24">
-              {/* Row 1: Product Engineering & AI Design Cleanup */}
+              {/* Row 1: Product Engineering */}
               <div className="flex flex-col gap-8">
                 <FeatureUIRow
                   tone="night"
-                  eyebrow="Design Systems & App Dev"
-                  title="Product Engineering & AI Design Cleanup"
-                  body="Elevating digital products from concept to launch with accessible design systems, AI asset refinement, and modern cross-platform application engineering."
+                  eyebrow="Websites, Web & Mobile App Dev"
+                  title="Product Engineering"
+                  body="Full-cycle digital product delivery from zero to one. We engineer custom marketing websites, high-performance web applications, and native cross-platform mobile apps (iOS & Android) with fluid 60fps UX and clean architectures."
                   cta={{ label: "Explore product engineering", href: "/services/product-engineering" }}
                   visual={
                     <TimelineVisual
                       title="Product Engineering Roadmap"
                       stages={[
-                        { label: "AI Cleanup & Figma", years: 2 },
-                        { label: "Web & Mobile App Dev", years: 4 },
-                        { label: "Optimization & Launch", years: 2 },
+                        { label: "Architecture & Scaffolding", years: 2 },
+                        { label: "Web & Mobile Engineering", years: 4 },
+                        { label: "60fps Polish & Launch", years: 2 },
                       ]}
                       total={8}
                       unit="wks"
-                      note="Production-grade launch in 8-week sprints"
+                      note="Zero-to-one launch in 8-week sprints"
                     />
                   }
                 />
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {serviceGroups[1]?.items.map((service) => (
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {serviceGroups[0]?.items.map((service) => (
                     <article key={service.title} className="rounded-xl border border-black/10 bg-[#f0f0f0]! p-5 transition-all hover:bg-white! hover:shadow-md">
                       <h4 className="font-semibold text-[15px] text-[#0b1424]">{service.title}</h4>
                       <p className="mt-2 text-[13px] leading-relaxed text-black/65">{service.details}</p>
@@ -119,7 +119,7 @@ export function AgencyLanding() {
                   }
                 />
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {serviceGroups[0]?.items.map((service) => (
+                  {serviceGroups[1]?.items.map((service) => (
                     <article key={service.title} className="rounded-xl border border-black/10 bg-[#f0f0f0]! p-5 transition-all hover:bg-white! hover:shadow-md">
                       <h4 className="font-semibold text-[15px] text-[#0b1424]">{service.title}</h4>
                       <p className="mt-2 text-[13px] leading-relaxed text-black/65">{service.details}</p>
@@ -128,9 +128,41 @@ export function AgencyLanding() {
                 </div>
               </div>
 
-              {/* Row 3: Paid Acquisition & Performance Marketing */}
+              {/* Row 3: AI Design Cleanup & Agent MVP Refinement */}
               <div className="flex flex-col gap-8">
                 <FeatureUIRow
+                  tone="night"
+                  eyebrow="Agent MVP Polish & Figma Design Systems"
+                  title="AI Design Cleanup & Agent MVP Refinement"
+                  body="Already have a prototype built by AI agents or rough concepts? We rescue disjointed AI-generated wireframes and fragile code, transforming them into accessible, pixel-perfect Figma design systems and hardened production architectures."
+                  cta={{ label: "Explore AI design cleanup", href: "/services/ai-design-cleanup" }}
+                  visual={
+                    <ChecklistVisual
+                      title="AI MVP Cleanup & Figma Audit"
+                      rows={[
+                        { label: "AI Concept Ingestion", value: "Audited & Tokenized" },
+                        { label: "Figma Design System", value: "100+ Components" },
+                        { label: "Accessibility (WCAG AAA)", value: "Contrast Verified" },
+                        { label: "Code-Ready Sync", value: "Tailwind Tokens" },
+                      ]}
+                      stat={{ value: 100, suffix: "%", label: "Production-ready token parity" }}
+                    />
+                  }
+                />
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {serviceGroups[2]?.items.map((service) => (
+                    <article key={service.title} className="rounded-xl border border-black/10 bg-[#f0f0f0]! p-5 transition-all hover:bg-white! hover:shadow-md">
+                      <h4 className="font-semibold text-[15px] text-[#0b1424]">{service.title}</h4>
+                      <p className="mt-2 text-[13px] leading-relaxed text-black/65">{service.details}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+
+              {/* Row 4: Paid Acquisition & Performance Marketing */}
+              <div className="flex flex-col gap-8">
+                <FeatureUIRow
+                  reverse
                   eyebrow="Performance Marketing"
                   title="Paid Acquisition & Performance Marketing"
                   body="Full-funnel media buying across Google, Meta, and TikTok, engineered for profitable customer acquisition, low CAC, and high ROAS."
@@ -150,7 +182,7 @@ export function AgencyLanding() {
                   }
                 />
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {serviceGroups[2]?.items.map((service) => (
+                  {serviceGroups[3]?.items.map((service) => (
                     <article key={service.title} className="rounded-xl border border-black/10 bg-[#f0f0f0]! p-5 transition-all hover:bg-white! hover:shadow-md">
                       <h4 className="font-semibold text-[15px] text-[#0b1424]">{service.title}</h4>
                       <p className="mt-2 text-[13px] leading-relaxed text-black/65">{service.details}</p>

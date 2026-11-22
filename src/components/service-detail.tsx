@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { ProjectItem, ServiceFeature } from "@/lib/site-data";
 import { FeatureUIRow, ChecklistVisual, TimelineVisual } from "@/components/ui/feature-ui-row";
+import HowItWorks from "@/components/ui/how-it-works";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check, ChevronRight } from "lucide-react";
 
@@ -86,13 +87,13 @@ export function ServiceDetail({ service, relatedProjects }: ServiceDetailProps) 
               <TimelineVisual
                 title="Product Engineering Roadmap"
                 stages={[
-                  { label: "AI Cleanup & Figma", years: 2 },
-                  { label: "Web & Mobile App Dev", years: 4 },
-                  { label: "Optimization & Launch", years: 2 },
+                  { label: "Architecture & Scaffolding", years: 2 },
+                  { label: "Web & Mobile Engineering", years: 4 },
+                  { label: "60fps Polish & Launch", years: 2 },
                 ]}
                 total={8}
                 unit="wks"
-                note="Production-grade launch in 8-week sprints"
+                note="Zero-to-one launch in 8-week sprints"
               />
             }
           />
@@ -113,6 +114,26 @@ export function ServiceDetail({ service, relatedProjects }: ServiceDetailProps) 
                   { label: "High Availability", value: "99.99% Uptime SLA" },
                 ]}
                 stat={{ value: 99, suffix: "%", label: "Uptime & fault-tolerance SLA" }}
+              />
+            }
+          />
+        ) : service.slug === "ai-design-cleanup" ? (
+          <FeatureUIRow
+            tone="night"
+            eyebrow={service.eyebrow}
+            title={service.title}
+            body={service.tagline}
+            cta={{ label: "Audit my agent MVP", href: "/#contact" }}
+            visual={
+              <ChecklistVisual
+                title="AI MVP Refinement Checklist"
+                rows={[
+                  { label: "AI Wireframe & Concept Audit", value: "Standardized" },
+                  { label: "Figma Component Library", value: "100+ Tokens" },
+                  { label: "React / Native Codebase Cleanup", value: "Type-Safe" },
+                  { label: "Accessibility & WCAG AAA", value: "100% Pass" },
+                ]}
+                stat={{ value: 100, suffix: "%", label: "Token parity & WCAG AAA compliance" }}
               />
             }
           />
@@ -142,7 +163,8 @@ export function ServiceDetail({ service, relatedProjects }: ServiceDetailProps) 
       <div data-service-sections className="project-sections flex flex-col gap-12">
         {/* Core Sub-Offerings */}
         <section className="content-block bg-[#f0f0f0]! shadow-none! border-0! rounded-2xl p-8" data-service-reveal>
-          <h2 className="label-line font-bold text-2xl text-blue-500!">{"// Core Capabilities & Offerings"}</h2>
+        <p className="label-line text-blue-500!">{"// Core Capabilities & Offerings"}</p>
+          
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {service.items.map((item) => (
               <article key={item.title} className="rounded-xl border border-black/10 bg-white p-6 shadow-xs">
@@ -155,10 +177,11 @@ export function ServiceDetail({ service, relatedProjects }: ServiceDetailProps) 
 
         {/* Deliverables */}
         <section className="content-block bg-[#f0f0f0]! shadow-none! border-0! rounded-2xl p-8" data-service-reveal>
-          <h2 className="label-line font-bold text-2xl text-blue-500!">{"// What We Deliver"}</h2>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+         <p className="label-line text-blue-500!">{"// What We Deliver"}</p>
+          
+          <div className="mt-6 flex flex-col gap-3">
             {service.deliverables.map((item) => (
-              <article key={item.title} className="flex gap-4 rounded-xl border border-black/10 bg-white p-6 shadow-xs">
+              <article key={item.title} className="flex gap-4 rounded-xl  p-6 shadow-xs">
                 <div className="grid size-8 shrink-0 place-items-center rounded-full bg-blue-600/10 text-blue-600">
                   <Check className="size-4" strokeWidth={2.5} />
                 </div>
@@ -172,22 +195,35 @@ export function ServiceDetail({ service, relatedProjects }: ServiceDetailProps) 
         </section>
 
         {/* Delivery Process */}
-        <section className="content-block bg-[#f0f0f0]! shadow-none! border-0! rounded-2xl p-8" data-service-reveal>
-          <h2 className="label-line font-bold text-2xl text-blue-500!">{"// Engineering & Execution Process"}</h2>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {service.process.map((step) => (
-              <article key={step.step} className="rounded-xl border border-black/10 bg-white p-6 shadow-xs">
-                <span className="font-mono text-2xl font-black text-blue-600">{step.step}</span>
-                <h3 className="mt-2 font-bold text-[15px] text-[#0b1424]">{step.title}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-black/65">{step.desc}</p>
-              </article>
-            ))}
+        <section className="content-block bg-white rounded-2xl border border-black/10 p-6 md:p-10 shadow-xs" data-service-reveal>
+          <div className="max-w-2xl">
+          <p className="label-line text-blue-500!">{"// Engineering & Execution Process"}</p>
+            <p className="mt-2 text-sm text-black/70">
+              Our systematic four-phase lifecycle from architecture discovery to production rollout and observability.
+            </p>
+          </div>
+          <div className="mt-8">
+            <HowItWorks
+              className="rounded-2xl bg-[#f0f0f0]"
+              features={service.process.map((step, idx) => ({
+                step: step.step,
+                title: step.title,
+                description: step.desc,
+                colorTheme: idx % 2 === 0 ? "blue" : "purple",
+                colors: {
+                  bg: "bg-white",
+                  text: idx % 2 === 0 ? "text-blue-600" : "text-indigo-600",
+                  border: "border-black/10",
+                },
+              }))}
+            />
           </div>
         </section>
 
         {/* Technologies & Tools */}
         <section className="content-block bg-[#f0f0f0]! shadow-none! border-0! rounded-2xl p-8" data-service-reveal>
-          <h2 className="label-line font-bold text-xl text-blue-500!">{"// Core Stack & Tools"}</h2>
+        <p className="label-line text-blue-500!">{"// Core Stack & Tools"}</p>
+          
           <div className="mt-4 flex flex-wrap gap-2.5">
             {service.technologies.map((tech) => (
               <span key={tech} className="rounded-md border border-black/10 bg-white px-3.5 py-1.5 text-xs font-semibold text-black/80">
@@ -200,7 +236,7 @@ export function ServiceDetail({ service, relatedProjects }: ServiceDetailProps) 
         {/* Related Case Studies */}
         {relatedProjects.length > 0 && (
           <section className="content-block bg-[#f0f0f0]! shadow-none! border-0! rounded-2xl p-8" data-service-reveal>
-            <h2 className="label-line font-bold text-2xl text-blue-500!">{"// Related Proven Case Studies"}</h2>
+          <p className="label-line text-blue-500!">{"// Related Proven Case Studies"}</p>
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProjects.map((project) => (
                 <Link
