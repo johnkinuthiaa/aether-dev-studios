@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { TransformingNavbar } from "@/components/ui/transforming-navbar";
 
 export interface WordsPullUpProps {
   text: string;
@@ -128,8 +129,11 @@ const PrismaHero = ({
   showAsterisk = true,
 }: PrismaHeroProps = {}) => {
   return (
-    <section className={`min-h-screen w-full relative ${className}`}>
-      <div className="relative min-h-[92vh] md:min-h-screen w-full overflow-hidden rounded-2xl md:rounded-[2rem] border border-white/10 shadow-2xl">
+    <section className={`min-h-screen w-full relative m-0 p-0 ${className}`}>
+      {/* Transforming Sticky Navbar: begins as centered hero pill, morphs to full-width fixed bar on scroll */}
+      <TransformingNavbar navItems={navItems} ctaText={ctaText} ctaHref={ctaHref} />
+
+      <div className="relative min-h-screen w-full overflow-hidden rounded-none border-none! shadow-none">
         
         <video
           autoPlay
@@ -146,28 +150,6 @@ const PrismaHero = ({
 
         {/* Gradient overlay */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/80" />
-
-        {/* Navbar */}
-        <nav className="absolute left-1/2 top-0 z-20 -translate-x-1/2">
-          <div className="flex items-center gap-2 rounded-b-2xl bg-black/90 backdrop-blur-md px-4 py-2.5 sm:gap-5 md:gap-8 md:rounded-b-3xl md:px-8 border-b border-x border-white/10 shadow-2xl">
-            {navItems.map((item, index) => {
-              const label = typeof item === "string" ? item : item.label;
-              const href = typeof item === "string" ? `#${label.toLowerCase()}` : item.href;
-              return (
-                <a
-                  key={`${label}-${index}`}
-                  href={href}
-                  className="text-[10px] font-medium transition-colors sm:text-xs md:text-sm tracking-wide"
-                  style={{ color: "rgba(225, 224, 204, 0.8)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#E1E0CC")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(225, 224, 204, 0.8)")}
-                >
-                  {label}
-                </a>
-              );
-            })}
-          </div>
-        </nav>
 
         {/* Hero content */}
         <div className="absolute bottom-0 left-0 right-0 px-4 pb-6 sm:px-8 md:px-12 md:pb-10">
@@ -232,5 +214,5 @@ const PrismaHero = ({
   );
 };
 
-export { PrismaHero, PrismaHero as AetherHero };
+export { PrismaHero, PrismaHero as AetherHero, TransformingNavbar };
 export default PrismaHero;

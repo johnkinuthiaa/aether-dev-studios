@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import MeadowRiseFooter from "@/components/ui/meadow-rise-footer";
-import { Layers } from "lucide-react";
 
 export function SiteFooter() {
   return (

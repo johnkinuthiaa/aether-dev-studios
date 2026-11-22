@@ -1,4 +1,4 @@
-import type { ProjectItem } from "@/lib/site-data";
+import type { ProjectItem, ServiceFeature } from "@/lib/site-data";
 
 export const SITE_NAME = "Aether Tech Studios";
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.aethertechstudios.com").replace(
@@ -64,5 +64,34 @@ export function buildProjectJsonLd(project: ProjectItem) {
       "@type": "Thing",
       name: tag,
     })),
+  };
+}
+
+export function buildServiceJsonLd(service: ServiceFeature) {
+  const serviceUrl = absoluteUrl(`/services/${service.slug}`);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${serviceUrl}#service`,
+    name: service.title,
+    url: serviceUrl,
+    headline: service.tagline,
+    description: service.description,
+    provider: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: service.title,
+      itemListElement: service.items.map((item, idx) => ({
+        "@type": "Offer",
+        position: idx + 1,
+        name: item.title,
+        description: item.details,
+      })),
+    },
   };
 }

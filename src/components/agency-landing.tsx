@@ -8,7 +8,13 @@ import { SiteFooter } from "@/components/site-footer";
 import { ProjectDeck } from "@/components/ui/scroll-stacking-cards";
 // import { AgencyKpiSection } from "@/components/agency-kpis";
 import { PrismaHero } from "@/components/ui/prisma-hero";
-import { benefits, faqs, projects, reviews, serviceGroups } from "@/lib/site-data";
+import { FeatureUIRow, ChecklistVisual, TimelineVisual } from "@/components/ui/feature-ui-row";
+import { BentoGridShowcase } from "@/components/ui/bento-product-features";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
+import { Server, Activity, ShieldCheck, Zap } from "lucide-react";
+import { faqs, projects, reviews, serviceGroups } from "@/lib/site-data";
 import {Button} from "@/components/ui/button"
 
 export function AgencyLanding() {
@@ -40,9 +46,9 @@ export function AgencyLanding() {
 
   return (
     <div ref={rootRef} className="page-root font-sans!">
-    <section className="mb-8">
-          <PrismaHero />
-        </section>
+      <section className="m-0 p-0 mb-8 w-full">
+        <PrismaHero />
+      </section>
       <main className="main-area">
        
         <div data-sections>
@@ -50,29 +56,108 @@ export function AgencyLanding() {
 
           <section id="services" className="shell section font-sans!" data-reveal>
             <div className="section-heading ">
-              
+              <p className="label-line text-blue-500!">{"// Services"}</p>
               <h2 className="font-sans">What we offer</h2>
               <p className="my-6!">
                 Complete technical and growth delivery across backend solutions, AI design cleanup, mobile and web app dev, contract-first API development, distributed systems, and performance paid advertising.
               </p>
             </div>
-            <div className="service-groups gap-8! my-10!">
-              {serviceGroups.map((group) => (
-                <article key={group.title} className="service-group">
-                  <header className="service-group-heading gap-3!">
-                    <h3>{group.title}</h3>
-                    <p>{group.intro}</p>
-                  </header>
-                  <div className="service-grid mt-4! bg-[#E3E2E2]! px-2 py-4 rounded-md w-fit!">
-                    {group.items.map((service) => (
-                      <article key={service.title} className="base-card bg-[#f0f0f0]!">
-                        <h3>{service.title}</h3>
-                        <p>{service.details}</p>
-                      </article>
-                    ))}
-                  </div>
-                </article>
-              ))}
+
+            <div className="my-14 flex flex-col gap-24">
+              {/* Row 1: Product Engineering & AI Design Cleanup */}
+              <div className="flex flex-col gap-8">
+                <FeatureUIRow
+                  tone="night"
+                  eyebrow="Design Systems & App Dev"
+                  title="Product Engineering & AI Design Cleanup"
+                  body="Elevating digital products from concept to launch with accessible design systems, AI asset refinement, and modern cross-platform application engineering."
+                  cta={{ label: "Explore product engineering", href: "/services/product-engineering" }}
+                  visual={
+                    <TimelineVisual
+                      title="Product Engineering Roadmap"
+                      stages={[
+                        { label: "AI Cleanup & Figma", years: 2 },
+                        { label: "Web & Mobile App Dev", years: 4 },
+                        { label: "Optimization & Launch", years: 2 },
+                      ]}
+                      total={8}
+                      unit="wks"
+                      note="Production-grade launch in 8-week sprints"
+                    />
+                  }
+                />
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {serviceGroups[1]?.items.map((service) => (
+                    <article key={service.title} className="rounded-xl border border-black/10 bg-[#f0f0f0]! p-5 transition-all hover:bg-white! hover:shadow-md">
+                      <h4 className="font-semibold text-[15px] text-[#0b1424]">{service.title}</h4>
+                      <p className="mt-2 text-[13px] leading-relaxed text-black/65">{service.details}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+
+              {/* Row 2: Backend Solutions & Distributed Systems */}
+              <div className="flex flex-col gap-8">
+                <FeatureUIRow
+                  reverse
+                  tone="royal"
+                  eyebrow="Infrastructure & Cloud"
+                  title="Backend Solutions & Distributed Systems"
+                  body="High-concurrency infrastructure, fault-tolerant architectures, and mission-critical data pipelines built to handle massive scale without downtime."
+                  cta={{ label: "Explore backend solutions", href: "/services/backend-solutions" }}
+                  visual={
+                    <ChecklistVisual
+                      title="Infrastructure & Systems SLA"
+                      rows={[
+                        { label: "Backend Solutions", value: "High throughput" },
+                        { label: "Distributed Systems Dev", value: "Kafka & Sharding" },
+                        { label: "Contract-first APIs", value: "REST, GraphQL & gRPC" },
+                        { label: "High Availability", value: "99.99% Uptime SLA" },
+                      ]}
+                      stat={{ value: 99, suffix: "%", label: "Uptime & fault-tolerance SLA" }}
+                    />
+                  }
+                />
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {serviceGroups[0]?.items.map((service) => (
+                    <article key={service.title} className="rounded-xl border border-black/10 bg-[#f0f0f0]! p-5 transition-all hover:bg-white! hover:shadow-md">
+                      <h4 className="font-semibold text-[15px] text-[#0b1424]">{service.title}</h4>
+                      <p className="mt-2 text-[13px] leading-relaxed text-black/65">{service.details}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+
+              {/* Row 3: Paid Acquisition & Performance Marketing */}
+              <div className="flex flex-col gap-8">
+                <FeatureUIRow
+                  eyebrow="Performance Marketing"
+                  title="Paid Acquisition & Performance Marketing"
+                  body="Full-funnel media buying across Google, Meta, and TikTok, engineered for profitable customer acquisition, low CAC, and high ROAS."
+                  cta={{ label: "Explore performance marketing", href: "/services/performance-marketing" }}
+                  tone="royal"
+                  visual={
+                    <ChecklistVisual
+                      title="Paid Ads Performance Suite"
+                      rows={[
+                        { label: "Google Ads (Search & PMax)", value: "High Intent" },
+                        { label: "Meta Ads (CAPI Tracking)", value: "Zero Signal Loss" },
+                        { label: "TikTok Ads (Spark & UGC)", value: "Viral Scaling" },
+                        { label: "Attribution & ROAS", value: "Real-time Tracking" },
+                      ]}
+                      stat={{ value: 340, suffix: "%", label: "Average client ROAS uplift" }}
+                    />
+                  }
+                />
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {serviceGroups[2]?.items.map((service) => (
+                    <article key={service.title} className="rounded-xl border border-black/10 bg-[#f0f0f0]! p-5 transition-all hover:bg-white! hover:shadow-md">
+                      <h4 className="font-semibold text-[15px] text-[#0b1424]">{service.title}</h4>
+                      <p className="mt-2 text-[13px] leading-relaxed text-black/65">{service.details}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
@@ -138,19 +223,171 @@ export function AgencyLanding() {
 
           <section id="benefits" className="shell section" data-reveal>
             <div className="section-heading">
-              <p className="label-line text-blue-500!">{"// Benefits"}</p>
-              <h2>Why teams choose us</h2>
+              <p className="label-line text-blue-500!">{"// Why Teams Trust Us"}</p>
+              <h2>Why teams trust us</h2>
               <p className="my-6!">
-                You get senior-level engineering, design refinement, and data-backed media buying built for measurable business outcomes.
+                You get senior-level systems engineering, design refinement, and data-backed media buying built for measurable commercial outcomes.
               </p>
             </div>
-            <div className="benefit-grid font-sans">
-              {benefits.map((benefit) => (
-                <article key={benefit.title} className="base-card bg-[#f0f0f0]!">
-                  <h3>{benefit.title}</h3>
-                  <p>{benefit.details}</p>
-                </article>
-              ))}
+
+            <div className="mt-8 font-sans">
+              <BentoGridShowcase
+                integration={
+                  <Card className="flex h-full flex-col justify-between border-black/10 bg-[#f0f0f0]! p-6 shadow-xs hover:bg-white! transition-all">
+                    <CardHeader className="p-0">
+                      <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600">
+                        <Server className="size-6" />
+                      </div>
+                      <Badge variant="outline" className="w-fit border-blue-600/30 text-blue-600">
+                        99.999% SLA
+                      </Badge>
+                      <CardTitle className="mt-4 text-xl font-bold text-[#0b1424]">
+                        Distributed Architecture at Scale
+                      </CardTitle>
+                      <CardDescription className="mt-2 text-sm leading-relaxed text-black/65">
+                        We engineer backends, Kafka event streams, and database sharding designed to process millions of transactions without single points of failure.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardFooter className="mt-8 flex items-center justify-between border-t border-black/10 p-0 pt-4">
+                      <div className="flex items-center gap-2 text-xs font-semibold text-black/75">
+                        <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+                        Multi-Region Failover
+                      </div>
+                      <Switch defaultChecked aria-label="Toggle multi-region failover" />
+                    </CardFooter>
+                  </Card>
+                }
+                trackers={
+                  <Card className="h-full border-black/10 bg-[#f0f0f0]! p-6 shadow-xs hover:bg-white! transition-all">
+                    <CardContent className="flex h-full flex-col justify-between p-0">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <ShieldCheck className="size-4 text-blue-600" />
+                          <CardTitle className="text-base font-bold text-[#0b1424]">
+                            Senior-Level Delivery
+                          </CardTitle>
+                        </div>
+                        <CardDescription className="mt-1 text-xs text-black/65">
+                          Dedicated tier-1 engineering & design squads
+                        </CardDescription>
+                      </div>
+                      <div className="mt-4 flex items-center justify-between">
+                        <div className="flex -space-x-2 overflow-hidden">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            className="inline-block size-8 rounded-full ring-2 ring-white object-cover"
+                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                            alt="Lead Architect"
+                          />
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            className="inline-block size-8 rounded-full ring-2 ring-white object-cover"
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+                            alt="Design Systems Lead"
+                          />
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            className="inline-block size-8 rounded-full ring-2 ring-white object-cover"
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80"
+                            alt="Growth Engineer"
+                          />
+                        </div>
+                        <span className="text-xs font-semibold text-blue-600">100% In-House</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                }
+                statistic={
+                  <Card className="relative h-full w-full overflow-hidden border-black/10 bg-[#f0f0f0]! p-6 shadow-xs hover:bg-white! transition-all">
+                    <div
+                      className="absolute inset-0 opacity-15"
+                      style={{
+                        backgroundImage: "radial-gradient(#0b1424 1px, transparent 1px)",
+                        backgroundSize: "14px 14px",
+                      }}
+                    />
+                    <CardContent className="relative z-10 flex h-full flex-col items-center justify-center p-0 text-center">
+                      <span className="text-6xl font-black text-[#0b1424] md:text-7xl">10X</span>
+                      <p className="mt-1 text-xs font-bold uppercase tracking-wider text-blue-600">
+                        Delivery Velocity Lift
+                      </p>
+                    </CardContent>
+                  </Card>
+                }
+                focus={
+                  <Card className="h-full border-black/10 bg-[#f0f0f0]! p-6 shadow-xs hover:bg-white! transition-all">
+                    <CardContent className="flex h-full flex-col justify-between p-0">
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <CardTitle className="text-base font-bold text-[#0b1424]">
+                            AI Design Cleanup
+                          </CardTitle>
+                          <CardDescription className="text-xs text-black/65">
+                            Component tokenization
+                          </CardDescription>
+                        </div>
+                        <Badge variant="outline" className="border-emerald-500/30 text-emerald-600">
+                          WCAG AAA
+                        </Badge>
+                      </div>
+                      <div className="my-2">
+                        <span className="text-5xl font-black text-[#0b1424]">60fps</span>
+                      </div>
+                      <div className="flex justify-between text-xs text-black/55">
+                        <span>Zero Layout Shift</span>
+                        <span>Smooth UX</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                }
+                productivity={
+                  <Card className="h-full border-black/10 bg-[#f0f0f0]! p-6 shadow-xs hover:bg-white! transition-all">
+                    <CardContent className="flex h-full flex-col justify-between p-0">
+                      <div className="flex items-center gap-2">
+                        <Zap className="size-4 text-blue-600" />
+                        <CardTitle className="text-base font-bold text-[#0b1424]">
+                          High-ROAS Acquisition
+                        </CardTitle>
+                      </div>
+                      <CardDescription className="mt-2 text-xs leading-relaxed text-black/65">
+                        Full-funnel Google, Meta, and TikTok campaigns engineered with server-side attribution to scale spend profitably.
+                      </CardDescription>
+                      <div className="mt-3 flex items-center gap-1.5 text-xs font-bold text-emerald-600">
+                        <Activity className="size-3.5" />
+                        <span>340% Average ROAS Uplift</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                }
+                shortcuts={
+                  <Card className="h-full border-black/10 bg-[#f0f0f0]! p-6 shadow-xs hover:bg-white! transition-all">
+                    <CardContent className="flex h-full flex-wrap items-center justify-between gap-4 p-0">
+                      <div>
+                        <CardTitle className="text-base font-bold text-[#0b1424]">
+                          Contract-First API Engineering
+                        </CardTitle>
+                        <CardDescription className="text-xs text-black/65">
+                          OpenAPI & Protobuf schemas, automated rate limiting, and instant SDK generation.
+                        </CardDescription>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="rounded-md border border-black/15 bg-white px-2.5 py-1 font-mono text-xs font-semibold text-[#0b1424]">
+                          gRPC
+                        </span>
+                        <span className="rounded-md border border-black/15 bg-white px-2.5 py-1 font-mono text-xs font-semibold text-[#0b1424]">
+                          GraphQL
+                        </span>
+                        <span className="rounded-md border border-black/15 bg-white px-2.5 py-1 font-mono text-xs font-semibold text-[#0b1424]">
+                          REST
+                        </span>
+                        <span className="rounded-md border border-black/15 bg-white px-2.5 py-1 font-mono text-xs font-semibold text-[#0b1424]">
+                          Kafka
+                        </span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                }
+              />
             </div>
           </section>
 

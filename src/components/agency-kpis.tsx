@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import Image from "next/image"
 import { PeakChart } from "@/components/ui/peak-chart"
-import { TrendingUp, Activity, Cpu, Sparkles, CheckCircle2 } from "lucide-react"
+import { TrendingUp, Activity, Cpu } from "lucide-react"
 
 // KPI Metric Data for Agency Client Discovery & Scale
 const ADS_DISCOVERY_SERIES: Record<string, { data: number[]; labels: string[]; value: number; suffix: string; caption: string }> = {

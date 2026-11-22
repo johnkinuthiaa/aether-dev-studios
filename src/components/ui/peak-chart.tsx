@@ -447,7 +447,6 @@ export function PeakChart({
   decimals = 0,
   title = "Conversion rate",
   caption = "Increase vs last month",
-  updatedText = "Data updated 2h ago",
   trend = "up",
   periods = ["Weekly", "Monthly", "Yearly"],
   period,

@@ -109,6 +109,191 @@ export const serviceGroups: ServiceGroup[] = configuredServiceGroups.map((group)
   items: pickServices(group.serviceTitles),
 }));
 
+export type ServiceFeature = {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  eyebrow: string;
+  tagline: string;
+  description: string;
+  badge: string;
+  tone: "royal" | "night";
+  stat: { value: number; suffix?: string; label: string };
+  deliverables: { title: string; desc: string }[];
+  process: { step: string; title: string; desc: string }[];
+  technologies: string[];
+  items: ServiceItem[];
+  relatedProjectSlugs: string[];
+};
+
+export const serviceFeatures: ServiceFeature[] = [
+  {
+    slug: "product-engineering",
+    title: "Product Engineering & AI Design Cleanup",
+    shortTitle: "Product Engineering",
+    eyebrow: "UI/UX & Modern Application Engineering",
+    tagline: "Refining AI concepts into production-grade Figma design systems and 60fps applications.",
+    description:
+      "We bridge the gap between creative AI experimentation and rock-solid engineering. From refining disjointed AI mockups into accessible design tokens to shipping native iOS, Android, and web applications that hit 60fps across every device.",
+    badge: "Production-Grade UI/UX",
+    tone: "night",
+    stat: { value: 60, suffix: "fps", label: "Frame-rate interaction target" },
+    deliverables: [
+      {
+        title: "AI Design Cleanup & Tokenization",
+        desc: "Converting chaotic raw AI renders into structured, accessible Figma components with typography scales and responsive auto-layouts.",
+      },
+      {
+        title: "Cross-Platform Mobile Apps",
+        desc: "Native iOS & Android apps built with React Native and Expo, featuring offline persistence and gesture-driven animations.",
+      },
+      {
+        title: "Modern Web Applications",
+        desc: "Next.js applications optimized with Turbopack, SSR, server actions, and sub-second Largest Contentful Paint (LCP).",
+      },
+      {
+        title: "Design System Governance",
+        desc: "Versioned component libraries with automated visual regression tests, Storybook documentation, and dark/light tokens.",
+      },
+    ],
+    process: [
+      {
+        step: "01",
+        title: "AI Concept Ingestion & Audit",
+        desc: "Reviewing raw concept mocks, isolating reusable design patterns, and establishing color/typography primitives.",
+      },
+      {
+        step: "02",
+        title: "Figma Component Architecture",
+        desc: "Creating tokenized, accessible component libraries with dark/light variants and hover/active states.",
+      },
+      {
+        step: "03",
+        title: "Full-Stack Implementation",
+        desc: "Writing type-safe frontend components and wiring them to performant backend endpoints.",
+      },
+      {
+        step: "04",
+        title: "60fps Polish & Cross-Device QA",
+        desc: "Auditing layout shifts, optimizing re-renders, and conducting hardware QA across modern devices.",
+      },
+    ],
+    technologies: ["React", "React Native", "Next.js", "TypeScript", "Tailwind CSS", "Figma", "Framer Motion", "Storybook"],
+    items: pickServices(["App Dev (Web & Mobile)", "AI Design Cleanup"]),
+    relatedProjectSlugs: ["radiant-ui", "soc-simulator", "hivecrest"],
+  },
+  {
+    slug: "backend-solutions",
+    title: "Backend Solutions & Distributed Systems",
+    shortTitle: "Backend Solutions",
+    eyebrow: "Systems Architecture & Cloud Infrastructure",
+    tagline: "Fault-tolerant microservices, Kafka event streams, and high-concurrency APIs.",
+    description:
+      "Enterprise-grade server architecture, distributed consensus, and zero-downtime database pipelines. We engineer backend systems to withstand extreme traffic spikes with deterministic sub-50ms latency.",
+    badge: "99.99% Uptime SLA",
+    tone: "royal",
+    stat: { value: 99, suffix: ".99%", label: "Uptime & fault-tolerance SLA" },
+    deliverables: [
+      {
+        title: "Distributed Consensus & Sharding",
+        desc: "Horizontally scalable multi-node architectures, database partition hashing, and automated leader election.",
+      },
+      {
+        title: "Event Streaming with Apache Kafka",
+        desc: "Real-time pub/sub pipelines, event sourcing, idempotent consumer workers, and dead-letter queue architectures.",
+      },
+      {
+        title: "Contract-First APIs (REST & gRPC)",
+        desc: "Schema-driven API design with strict typing, OpenAPI documentation, and automated gateway routing.",
+      },
+      {
+        title: "Multi-Region Cloud Deployment",
+        desc: "Active-active failover clusters with containerized Kubernetes orchestration and automated telemetry.",
+      },
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Architecture & Bottleneck Audit",
+        desc: "Profiling database locks, connection pooling limits, socket exhaustion, and message bus throughput.",
+      },
+      {
+        step: "02",
+        title: "Contract-First Interface Design",
+        desc: "Defining OpenAPI and Protobuf schemas before writing backend logic to ensure client-server decoupling.",
+      },
+      {
+        step: "03",
+        title: "Distributed Pipeline Construction",
+        desc: "Deploying partitioned messaging clusters, Redis caching layers, and resilient database replicas.",
+      },
+      {
+        step: "04",
+        title: "Chaos Testing & Production Cutover",
+        desc: "Simulating node failures, network partitions, and heavy traffic cutovers with zero data loss.",
+      },
+    ],
+    technologies: ["Go", "Node.js", "PostgreSQL", "Apache Kafka", "Redis", "gRPC", "Docker", "Kubernetes", "AWS"],
+    items: pickServices(["Backend Solutions", "Distributed Systems Dev", "API Development"]),
+    relatedProjectSlugs: ["fugitive", "nebula", "hivecrest"],
+  },
+  {
+    slug: "performance-marketing",
+    title: "Paid Acquisition & Performance Marketing",
+    shortTitle: "Performance Marketing",
+    eyebrow: "Omnichannel Growth & Media Buying",
+    tagline: "Data-backed advertising across Google, Meta, and TikTok engineered for ROAS.",
+    description:
+      "We combine algorithmic media buying with high-velocity creative testing and server-side attribution to scale customer acquisition while slashing customer acquisition costs (CAC).",
+    badge: "340% Avg ROAS Uplift",
+    tone: "royal",
+    stat: { value: 340, suffix: "%", label: "Average client ROAS uplift" },
+    deliverables: [
+      {
+        title: "Google Search & Performance Max",
+        desc: "High-intent search capture, smart bidding strategy calibration, and automated negative keyword trees.",
+      },
+      {
+        title: "Meta Dynamic Creative & CAPI",
+        desc: "Server-side Conversions API integration to restore full signal parity and enable algorithmic audience matching.",
+      },
+      {
+        title: "TikTok Spark Ads & Creator UGC",
+        desc: "Native vertical video creative sprints that blend seamlessly into user feeds for maximum engagement.",
+      },
+      {
+        title: "Attribution Modeling & Real-Time Dashboards",
+        desc: "Single-source-of-truth analytics tracking blended ROAS, LTV-to-CAC, and cohort retention.",
+      },
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Tracking & Pixel Infrastructure Audit",
+        desc: "Configuring server-side CAPI, Google Tag Manager, and UTM taxonomies for clean attribution.",
+      },
+      {
+        step: "02",
+        title: "High-Volume Creative Sprints",
+        desc: "Producing varied UGC hooks, value propositions, and static ad variations for multi-platform testing.",
+      },
+      {
+        step: "03",
+        title: "Algorithmic Media Buying & Scaling",
+        desc: "Allocating budget to winning ad angles and scaling spend while protecting margin and ROAS.",
+      },
+      {
+        step: "04",
+        title: "Continuous A/B Testing & Optimization",
+        desc: "Weekly bid adjustments, ad fatigue rotation, and landing page conversion rate optimization.",
+      },
+    ],
+    technologies: ["Google Ads", "Meta Ads Manager", "TikTok Ads Manager", "Server-Side CAPI", "Google Analytics 4", "Triple Whale"],
+    items: pickServices(["Google Ads", "Meta Ads (Facebook & Instagram)", "TikTok Ads"]),
+    relatedProjectSlugs: ["stomic-studio", "fugitive"],
+  },
+];
+
 export type ProjectItem = {
   slug: string;
   title: string;
