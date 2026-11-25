@@ -4,9 +4,13 @@ import { faqs, projects, services } from "@/lib/site-data";
 import {
   CONTACT_EMAIL,
   DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  OPENGRAPH_IMAGE,
+  OPENGRAPH_VIDEO,
   SEO_KEYWORDS,
   SITE_NAME,
   SITE_URL,
+  TWITTER_IMAGE_PATH,
   absoluteUrl,
   toJsonLd,
 } from "@/lib/seo";
@@ -31,13 +35,20 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
+    type: "website",
     url: SITE_URL,
-    title: `${SITE_NAME} | Backend Solutions, App Dev, Distributed Systems & Paid Ads`,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | ${DEFAULT_TITLE}`,
     description: DEFAULT_DESCRIPTION,
+    locale: "en_US",
+    videos: [OPENGRAPH_VIDEO],
+    images: [OPENGRAPH_IMAGE],
   },
   twitter: {
-    title: `${SITE_NAME} | Backend Solutions, App Dev, Distributed Systems & Paid Ads`,
+    card: "summary_large_image",
+    title: `${SITE_NAME} | ${DEFAULT_TITLE}`,
     description: DEFAULT_DESCRIPTION,
+    images: [TWITTER_IMAGE_PATH],
   },
 };
 

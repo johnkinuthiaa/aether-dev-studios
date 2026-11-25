@@ -7,11 +7,31 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.aether
 );
 export const CONTACT_EMAIL = "hello@aethertechstudios.com";
 
-export const DEFAULT_TITLE = "Backend Solutions, App Dev, Distributed Systems & Paid Ads";
+export const DEFAULT_TITLE = "Web Development, Backend Solutions, App Dev & Paid Ads";
 export const DEFAULT_DESCRIPTION =
-  "Aether Tech Studios engineers robust backend solutions, distributed systems, modern app dev, API architectures, AI design cleanup, and high-ROAS Google, Meta, and TikTok ad campaigns.";
+  "Aether Tech Studios engineers backend solutions, distributed systems, modern app dev, APIs, AI design cleanup, and Google, Meta, and TikTok ad campaigns.";
 
-// Keyword set tuned for high-intent technical software services and digital performance marketing
+export const OPENGRAPH_VIDEO_URL =
+  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4";
+export const OPENGRAPH_IMAGE_PATH = "/opengraph-image.png";
+export const TWITTER_IMAGE_PATH = "/twitter-image.png";
+
+export const OPENGRAPH_VIDEO = {
+  url: OPENGRAPH_VIDEO_URL,
+  secureUrl: OPENGRAPH_VIDEO_URL,
+  type: "video/mp4",
+  width: 1920,
+  height: 1080,
+};
+
+export const OPENGRAPH_IMAGE = {
+  url: OPENGRAPH_IMAGE_PATH,
+  width: 1200,
+  height: 630,
+  alt: `${SITE_NAME} - ${DEFAULT_TITLE}`,
+  type: "image/png",
+};
+
 export const SEO_KEYWORDS = [
   "backend solutions",
   "backend development company",

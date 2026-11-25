@@ -105,7 +105,6 @@ export interface PrismaHeroProps {
 const defaultNavItems: NavItemObject[] = [
   { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
-  { label: "KPIs", href: "#kpis" },
   { label: "Benefits", href: "#benefits" },
   { label: "Reviews", href: "#reviews" },
   { label: "Contact", href: "#contact" },
@@ -124,7 +123,7 @@ const PrismaHero = ({
   ctaHref = defaultCtaHref,
   onCtaClick,
   videoSrc = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4",
-  poster = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1920&auto=format&fit=crop",
+  poster = "/opengraph-image.png",
   navItems = defaultNavItems,
   className = "",
   showAsterisk = true,

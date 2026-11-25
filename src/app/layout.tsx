@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
 import { Archivo, Plus_Jakarta_Sans } from "next/font/google";
 import { sfPro, sfMono, newYork } from "@/lib/fonts";
-import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, SEO_KEYWORDS, SITE_NAME, SITE_URL } from "@/lib/seo";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  OPENGRAPH_IMAGE,
+  OPENGRAPH_VIDEO,
+  SEO_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+  TWITTER_IMAGE_PATH,
+} from "@/lib/seo";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -37,20 +46,14 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | ${DEFAULT_TITLE}`,
     description: DEFAULT_DESCRIPTION,
     locale: "en_US",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: `${SITE_NAME} - Backend Solutions, App Dev, Distributed Systems & Paid Ads`,
-      },
-    ],
+    videos: [OPENGRAPH_VIDEO],
+    images: [OPENGRAPH_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | ${DEFAULT_TITLE}`,
     description: DEFAULT_DESCRIPTION,
-    images: ["/twitter-image.png"],
+    images: [TWITTER_IMAGE_PATH],
   },
   robots: {
     index: true,

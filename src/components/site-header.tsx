@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { navItems } from "@/lib/site-data";
+import Image from "next/image"
 
 type SiteHeaderProps = {
   compact?: boolean;
@@ -36,8 +37,8 @@ export function SiteHeader({ compact = false }: SiteHeaderProps) {
   return (
     <header className="site-header" data-nav>
       <div className="shell site-header-row">
-        <Link href="/" className="logo-mark" aria-label="Aether Tech Studios home">
-          Aether Tech Studios
+        <Link href="/" className="logo-mark flex items-center gap-2" aria-label="Aether Tech Studios home">
+        <Image src={"/logo-light.svg"} alt={"logo"} height={100} width={100} className="h-10 w-10"/> Aether Tech Studios
         </Link>
 
         <button

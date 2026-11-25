@@ -68,7 +68,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           __html: toJsonLd(buildProjectJsonLd(project)),
         }}
       />
-      <SiteHeader compact />
+      <SiteHeader />
       <main className="main-area font-sans!">
         <div className="shell back-link-wrap">
           <Link href="/#work" className="back-link flex items-center gap-3">
