@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image"
 
 export interface NavItemObject {
   label: string;
@@ -91,9 +92,13 @@ export function TransformingNavbar({
           <Link
             href="/"
             className="whitespace-nowrap font-display text-base font-extrabold tracking-tight transition-colors sm:text-lg cursor-pointer"
-            style={{ color: "#FFFFFF" }}
+            style={{ color: "#E1E0CC" }}
           >
+            <div className="flex items-center">
+            <Image src={"/logo-dark.svg"} alt={"logo"} height={100} width={100} className="h-10 w-10"/>
             {brandName}
+            </div>
+            
           </Link>
         </div>
 

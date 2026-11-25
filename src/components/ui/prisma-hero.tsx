@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TransformingNavbar } from "@/components/ui/transforming-navbar";
+import Image from "next/image";
 
 export interface WordsPullUpProps {
   text: string;
@@ -32,7 +33,7 @@ export const WordsPullUp = ({ text, className = "", showAsterisk = false, style 
           >
             {word}
             {showAsterisk && isLast && (
-              <span className="absolute top-[0.65em] -right-[0.3em] text-[0.31em]">*</span>
+              <span className="absolute top-[0.65em] -right-[0.3em] text-[0.31em]">c</span>
             )}
           </motion.span>
         );
@@ -110,7 +111,7 @@ const defaultNavItems: NavItemObject[] = [
   { label: "Contact", href: "#contact" },
 ];
 
-const defaultTitle = "Aether dev studios";
+const defaultTitle = "Aether Tech studios";
 const defaultSubtitle =
   "Aether Tech Studios engineers resilient backend architectures and distributed systems, builds world-class web and mobile applications with pristine design systems, and scales customer acquisition with high-ROAS paid ads.";
 const defaultCtaText = "Contact Us";
@@ -155,7 +156,10 @@ const PrismaHero = ({
         <div className="absolute bottom-0 left-0 right-0 px-4 pb-6 sm:px-8 md:px-12 md:pb-10">
           <div className="grid grid-cols-12 items-end gap-6">
             
-            <div className="col-span-12 lg:col-span-7 xl:col-span-8">
+            <div className="flex  items-center gap-3 col-span-12 lg:col-span-7 xl:col-span-8">
+            <span>
+              <Image src={"/logo-dark.svg"} alt={"logo"} height={100} width={100} className="h-20 w-10"/>
+            </span>
               <h1
                 className="font-medium leading-[0.85] tracking-[-0.07em] text-[24vw] sm:text-[22vw] md:text-[20vw] lg:text-[18vw] xl:text-[17vw]"
                 style={{ color: "#E1E0CC" }}

@@ -88,7 +88,7 @@ export function AgencyLanding() {
                 />
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {serviceGroups[0]?.items.map((service) => (
-                    <article key={service.title} className="rounded-xl border border-black/10 bg-[#f0f0f0]! p-5 transition-all hover:bg-white! hover:shadow-md">
+                    <article key={service.title} className="rounded-xl border border-black/10 bg-[#f0f0f0]! cursor-pointer p-5 transition-all hover:bg-white! hover:shadow-md">
                       <h4 className="font-semibold text-[15px] text-[#0b1424]">{service.title}</h4>
                       <p className="mt-2 text-[13px] leading-relaxed text-black/65">{service.details}</p>
                     </article>
@@ -134,7 +134,7 @@ export function AgencyLanding() {
                   tone="night"
                   eyebrow="Agent MVP Polish & Figma Design Systems"
                   title="AI Design Cleanup & Agent MVP Refinement"
-                  body="Already have a prototype built by AI agents or rough concepts? We rescue disjointed AI-generated wireframes and fragile code, transforming them into accessible, pixel-perfect Figma design systems and hardened production architectures."
+                  body="Already have a prototype built by AI agents or rough concepts? We rescue disjointed AI-generated wireframes and fragile code, transforming them into accessible, pixel-perfect design systems and hardened production applications that users will love."
                   cta={{ label: "Explore AI design cleanup", href: "/services/ai-design-cleanup" }}
                   visual={
                     <ChecklistVisual
@@ -164,7 +164,7 @@ export function AgencyLanding() {
                 <FeatureUIRow
                   reverse
                   eyebrow="Performance Marketing"
-                  title="Paid Acquisition & Performance Marketing"
+                  title="Ad Campaigns & Performance Marketing"
                   body="Full-funnel media buying across Google, Meta, and TikTok, engineered for profitable customer acquisition, low CAC, and high ROAS."
                   cta={{ label: "Explore performance marketing", href: "/services/performance-marketing" }}
                   tone="royal"
@@ -228,7 +228,7 @@ export function AgencyLanding() {
               <p className="label-line text-blue-500!">{"// Work"}</p>
               <h2 className="font-sans">Proven transformations</h2>
               <p className="my-6!">
-                See proof of high-impact platforms, systems, and product transformations.
+                See proof of high impact platforms, systems, and product transformations.
               </p>
             </div>
             <ProjectDeck ground="#f0f0f0" />
@@ -267,7 +267,7 @@ export function AgencyLanding() {
                 integration={
                   <Card className="flex h-full flex-col justify-between border-black/10 bg-[#f0f0f0]! p-6 shadow-xs hover:bg-white! transition-all">
                     <CardHeader className="p-0">
-                      <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600">
+                      <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-white">
                         <Server className="size-6" />
                       </div>
                       <Badge variant="outline" className="w-fit border-blue-600/30 text-blue-600">
@@ -280,13 +280,7 @@ export function AgencyLanding() {
                         We engineer backends, Kafka event streams, and database sharding designed to process millions of transactions without single points of failure.
                       </CardDescription>
                     </CardHeader>
-                    <CardFooter className="mt-8 flex items-center justify-between border-t border-black/10 p-0 pt-4">
-                      <div className="flex items-center gap-2 text-xs font-semibold text-black/75">
-                        <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-                        Multi-Region Failover
-                      </div>
-                      <Switch defaultChecked aria-label="Toggle multi-region failover" />
-                    </CardFooter>
+                    
                   </Card>
                 }
                 trackers={
@@ -296,34 +290,14 @@ export function AgencyLanding() {
                         <div className="flex items-center gap-2">
                           <ShieldCheck className="size-4 text-blue-600" />
                           <CardTitle className="text-base font-bold text-[#0b1424]">
-                            Senior-Level Delivery
+                            Senior-Level Product Delivery
                           </CardTitle>
                         </div>
                         <CardDescription className="mt-1 text-xs text-black/65">
-                          Dedicated tier-1 engineering & design squads
+                          Dedicated tier-1 engineering & design squads dedicated to delivering high quality solutions for your software needs
                         </CardDescription>
                       </div>
                       <div className="mt-4 flex items-center justify-between">
-                        <div className="flex -space-x-2 overflow-hidden">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            className="inline-block size-8 rounded-full ring-2 ring-white object-cover"
-                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
-                            alt="Lead Architect"
-                          />
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            className="inline-block size-8 rounded-full ring-2 ring-white object-cover"
-                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
-                            alt="Design Systems Lead"
-                          />
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            className="inline-block size-8 rounded-full ring-2 ring-white object-cover"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80"
-                            alt="Growth Engineer"
-                          />
-                        </div>
                         <span className="text-xs font-semibold text-blue-600">100% In-House</span>
                       </div>
                     </CardContent>
@@ -341,9 +315,10 @@ export function AgencyLanding() {
                     <CardContent className="relative z-10 flex h-full flex-col items-center justify-center p-0 text-center">
                       <span className="text-6xl font-black text-[#0b1424] md:text-7xl">10X</span>
                       <p className="mt-1 text-xs font-bold uppercase tracking-wider text-blue-600">
-                        Delivery Velocity Lift
+                        Delivery Speed
                       </p>
                     </CardContent>
+
                   </Card>
                 }
                 focus={
@@ -354,19 +329,17 @@ export function AgencyLanding() {
                           <CardTitle className="text-base font-bold text-[#0b1424]">
                             AI Design Cleanup
                           </CardTitle>
-                          <CardDescription className="text-xs text-black/65">
-                            Component tokenization
+                          <CardDescription className="text-sm mt-1 text-black/65">
+                            Move from generic AI designs to production grade user interfaces that look professional.
                           </CardDescription>
                         </div>
-                        <Badge variant="outline" className="border-emerald-500/30 text-emerald-600">
-                          WCAG AAA
-                        </Badge>
+                        
                       </div>
                       <div className="my-2">
                         <span className="text-5xl font-black text-[#0b1424]">60fps</span>
                       </div>
                       <div className="flex justify-between text-xs text-black/55">
-                        <span>Zero Layout Shift</span>
+                        <span>Clean UI</span>
                         <span>Smooth UX</span>
                       </div>
                     </CardContent>
@@ -376,18 +349,15 @@ export function AgencyLanding() {
                   <Card className="h-full border-black/10 bg-[#f0f0f0]! p-6 shadow-xs hover:bg-white! transition-all">
                     <CardContent className="flex h-full flex-col justify-between p-0">
                       <div className="flex items-center gap-2">
-                        <Zap className="size-4 text-blue-600" />
+                        
                         <CardTitle className="text-base font-bold text-[#0b1424]">
-                          High-ROAS Acquisition
+                          High-Return Ad campaigns
                         </CardTitle>
                       </div>
                       <CardDescription className="mt-2 text-xs leading-relaxed text-black/65">
                         Full-funnel Google, Meta, and TikTok campaigns engineered with server-side attribution to scale spend profitably.
                       </CardDescription>
-                      <div className="mt-3 flex items-center gap-1.5 text-xs font-bold text-emerald-600">
-                        <Activity className="size-3.5" />
-                        <span>340% Average ROAS Uplift</span>
-                      </div>
+                      <div></div>
                     </CardContent>
                   </Card>
                 }
