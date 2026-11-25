@@ -33,7 +33,7 @@ export const WordsPullUp = ({ text, className = "", showAsterisk = false, style 
           >
             {word}
             {showAsterisk && isLast && (
-              <span className="absolute top-[0.65em] -right-[0.3em] text-[0.31em]">c</span>
+              <span className="absolute top-[0.65em] -right-[0.3em] text-[0.31em]">*</span>
             )}
           </motion.span>
         );
@@ -155,10 +155,8 @@ const PrismaHero = ({
         <div className="absolute bottom-0 left-0 right-0 px-4 pb-6 sm:px-8 md:px-12 md:pb-10">
           <div className="grid grid-cols-12 items-end gap-6">
             
-            <div className="flex  items-center gap-3 col-span-12 lg:col-span-7 xl:col-span-8">
-            <span>
-              <Image src={"/logo-dark.svg"} alt={"logo"} height={100} width={100} className="h-20 w-10"/>
-            </span>
+            <div className="flex md:flex-row flex-col items-center gap-3 col-span-12 lg:col-span-7 xl:col-span-8">
+            
               <h1
                 className="font-medium leading-[0.85] tracking-[-0.07em] text-[24vw] sm:text-[22vw] md:text-[20vw] lg:text-[18vw] xl:text-[17vw]"
                 style={{ color: "#E1E0CC" }}
