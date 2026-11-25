@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import MeadowRiseFooter from "@/components/ui/meadow-rise-footer";
+import { CONTACT_EMAIL } from "@/lib/seo";
 
 export function SiteFooter() {
   return (
@@ -53,7 +54,7 @@ export function SiteFooter() {
             { label: "Why Teams Choose Us", href: "/#benefits" },
             { label: "CTO & Founder Reviews", href: "/#reviews" },
             { label: "Technical FAQs", href: "/#faqs" },
-            { label: "hello@aethertechstudios.com", href: "mailto:hello@aethertechstudios.com" },
+            { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
             { label: "Schedule Strategy Call", href: "/#contact" },
           ],
         },

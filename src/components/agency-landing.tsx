@@ -15,7 +15,8 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Server, Activity, ShieldCheck, Zap } from "lucide-react";
 import { faqs, projects, reviews, serviceGroups } from "@/lib/site-data";
-import {Button} from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { CONTACT_EMAIL } from "@/lib/seo";
 
 export function AgencyLanding() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -451,7 +452,25 @@ export function AgencyLanding() {
               </p>
             </div>
             <div className="contact-grid">
-              <form className="base-card contact-form">
+              <form
+                className="base-card contact-form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const form = e.currentTarget;
+                  const formData = new FormData(form);
+                  const name = (formData.get("name") as string) || "";
+                  const email = (formData.get("email") as string) || "";
+                  const engagement = (formData.get("engagement") as string) || "General Inquiry";
+                  const message = (formData.get("message") as string) || "";
+
+                  const subject = encodeURIComponent(`Project Inquiry: ${engagement} - ${name}`);
+                  const body = encodeURIComponent(
+                    `Name: ${name}\nEmail: ${email}\nEngagement Type: ${engagement}\n\nMessage:\n${message}\n`
+                  );
+
+                  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+                }}
+              >
                 <label>
                   Your name*
                   <input type="text" name="name" placeholder="John Kamau" required />
@@ -479,9 +498,17 @@ export function AgencyLanding() {
                     placeholder="Share your technical requirements, current stack, paid acquisition goals, or timeline."
                   />
                 </label>
-                <Button type="submit" variant={"default"} className="cursor-pointer bg-blue-500 text-white w-fit my-3! ">
-                  Start the Conversation
-                </Button>
+                <div className="flex flex-col gap-2 my-3!">
+                  <Button type="submit" variant={"default"} className="cursor-pointer bg-blue-500 text-white w-fit">
+                    Start the Conversation
+                  </Button>
+                  <p className="text-xs text-neutral-400">
+                    Prefer direct email? Reach out at{" "}
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-400 hover:underline">
+                      {CONTACT_EMAIL}
+                    </a>
+                  </p>
+                </div>
               </form>
               
             </div>

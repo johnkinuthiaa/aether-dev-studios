@@ -5,7 +5,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.aether
   /\/+$/,
   "",
 );
-export const CONTACT_EMAIL = "hello@aethertechstudios.com";
+export const CONTACT_EMAIL = "yagamidev94@gmail.com";
 
 export const DEFAULT_TITLE = "Web Development, Backend Solutions, App Dev & Paid Ads";
 export const DEFAULT_DESCRIPTION =
